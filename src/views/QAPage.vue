@@ -8,13 +8,9 @@
         <h2>{{ currentQuestion.text }}</h2>
       </div>
       <div class="qa-options">
-        <div
-          v-for="(opt, idx) in currentQuestion.options"
-          :key="idx"
-          class="qa-option"
+        <div v-for="(opt, idx) in currentQuestion.options" :key="idx" class="qa-option"
           :class="{ selected: selectedIndex === idx, correct: showResult && idx === currentQuestion.answer, wrong: showResult && selectedIndex === idx && idx !== currentQuestion.answer }"
-          @click="selectOption(idx)"
-        >
+          @click="selectOption(idx)">
           <template v-if="opt.img">
             <img :src="opt.img" :alt="opt.text || '选项图片'" />
             <div v-if="opt.text">{{ opt.text }}</div>
@@ -53,9 +49,9 @@ import { ref, computed } from 'vue'
 const questions = ref([
   {
     text: '下列哪一项是壮锦的传统图案？',
-    img: 'https://img.zcool.cn/community/01b1e95e2f2e2fa801216518a2e2e2.jpg@1280w_1l_2o_100sh.jpg',
+    img: '/img/QA/q1q.png',
     options: [
-      { text: '凤凰' },
+      { text: '凤凰,蝴蝶' },
       { text: '龙' },
       { text: '玫瑰花' },
       { text: '太阳' }
@@ -63,33 +59,32 @@ const questions = ref([
     answer: 0
   },
   {
-    text: '请选择正确的壮锦织造工具图片',
+    text: '壮锦传统上多用于以下哪一种用途？',
     options: [
-      { img: 'https://img.zcool.cn/community/01e2e25e2f2e2fa801216518a2e2e2.jpg@1280w_1l_2o_100sh.jpg', text: '织机' },
-      { img: 'https://img.zcool.cn/community/01a1e95e2f2e2fa801216518a2e2e2.jpg@1280w_1l_2o_100sh.jpg', text: '剪刀' },
-      { img: 'https://img.zcool.cn/community/01b1e95e2f2e2fa801216518a2e2e2.jpg@1280w_1l_2o_100sh.jpg', text: '梭子' },
-      { img: 'https://img.zcool.cn/community/01e2e25e2f2e2fa801216518a2e2e2.jpg@1280w_1l_2o_100sh.jpg', text: '针线' }
+      { text: '鞋底垫布' },
+      { text: '建筑装饰画' },
+      { text: '礼仪服饰或嫁妆' },
+      { text: '军队制服' }
     ],
-    answer: 0
+    answer: 2
   },
   {
-    text: '壮锦常用于哪些场合？',
+    text: '壮锦最早的织造工具是？',
     options: [
-      { text: '服饰' },
-      { text: '家居装饰' },
-      { text: '礼仪用品' },
-      { text: '以上都是' }
+      { text: '梭织机' },
+      { text: '背带织机' },
+      { text: '脚踏提花机' },
+      { text: '飞梭织布机' }
     ],
-    answer: 3
+    answer: 1
   },
   {
-    text: '请选择壮锦的代表性花纹图片',
-    img: '',
+    text: '那个是山茶花纹壮锦',
     options: [
-      { img: 'https://img.zcool.cn/community/01b1e95e2f2e2fa801216518a2e2e2.jpg@1280w_1l_2o_100sh.jpg' },
-      { img: 'https://img.zcool.cn/community/01e2e25e2f2e2fa801216518a2e2e2.jpg@1280w_1l_2o_100sh.jpg' },
-      { img: 'https://img.zcool.cn/community/01a1e95e2f2e2fa801216518a2e2e2.jpg@1280w_1l_2o_100sh.jpg' },
-      { img: 'https://img.zcool.cn/community/01b1e95e2f2e2fa801216518a2e2e2.jpg@1280w_1l_2o_100sh.jpg' }
+      { img: '/img/QA/dwl.png' },
+      { img: '/img/QA/jhfsw.png' },
+      { img: '/img/QA/schw.png' },
+      { img: '/img/QA/sfw.png' }
     ],
     answer: 2
   }
@@ -132,20 +127,23 @@ function restart() {
   margin: 40px auto;
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   padding: 32px 24px;
   min-height: 400px;
 }
+
 .qa-question {
   margin-bottom: 24px;
   text-align: center;
 }
+
 .qa-question-img img {
   max-width: 320px;
   max-height: 180px;
   border-radius: 8px;
   margin-bottom: 12px;
 }
+
 .qa-options {
   display: flex;
   flex-wrap: wrap;
@@ -153,6 +151,7 @@ function restart() {
   justify-content: center;
   margin-bottom: 24px;
 }
+
 .qa-option {
   background: #f5f5f5;
   border-radius: 8px;
@@ -166,28 +165,34 @@ function restart() {
   border: 2px solid transparent;
   transition: border 0.2s, background 0.2s;
 }
+
 .qa-option.selected {
   border: 2px solid #42b983;
   background: #e6f9f0;
 }
+
 .qa-option.correct {
   border: 2px solid #42b983;
   background: #d4f5e9;
 }
+
 .qa-option.wrong {
   border: 2px solid #e74c3c;
   background: #fbeaea;
 }
+
 .qa-option img {
   max-width: 120px;
   max-height: 80px;
   border-radius: 6px;
   margin-bottom: 6px;
 }
+
 .qa-actions {
   text-align: center;
   margin-bottom: 12px;
 }
+
 .qa-actions button {
   background: #42b983;
   color: #fff;
@@ -199,18 +204,20 @@ function restart() {
   margin: 0 8px;
   transition: background 0.2s;
 }
+
 .qa-actions button:disabled {
   background: #ccc;
   cursor: not-allowed;
 }
+
 .qa-feedback {
   text-align: center;
   font-size: 1.1rem;
   margin-top: 8px;
 }
+
 .qa-finish {
   text-align: center;
   padding: 40px 0;
 }
 </style>
-

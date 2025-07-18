@@ -3,8 +3,8 @@
     <el-header class="app-header">
       <!-- 左侧 Logo 区 -->
       <div class="left">
-        <img src="https://vuejs.org/logo.svg" class="logo" />
-        <span class="title">Vue.js</span>
+        <img src="/img/logo.png" class="logo" />
+        <span class="title">壮锦博物馆</span>
       </div>
 
       <!-- 中间导航菜单 -->
