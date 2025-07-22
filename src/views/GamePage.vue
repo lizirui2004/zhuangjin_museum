@@ -17,8 +17,7 @@
 
 <script setup>
 import { ref, computed } from 'vue'
-
-const imgUrl = '/img/game/game.png'
+import imgUrl from '@/assets/img/game/game.png'
 const gridSize = 3
 const pieceSize = 100
 const imgSize = gridSize * pieceSize

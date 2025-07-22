@@ -48,19 +48,22 @@
 </template>
 
 <script setup>
+import carousel1 from '@/assets/img/home/carousel1.png'
+import carousel2 from '@/assets/img/home/carousel2.png'
+import carousel3 from '@/assets/img/home/carousel3.png'
 import { ref } from 'vue'
 
 const images = ref([
   {
-    src: '/img/home/carousel1.png',
+    src: carousel1,
     alt: '壮锦图1'
   },
   {
-    src: '/img/home/carousel2.png',
+    src: carousel2,
     alt: '壮锦图2'
   },
   {
-    src: '/img/home/carousel3.png',
+    src: carousel3,
     alt: '壮锦图3'
   }
 ])

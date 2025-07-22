@@ -3,7 +3,7 @@
     <el-header class="app-header">
       <!-- 左侧 Logo 区 -->
       <div class="left">
-        <img src="/img/logo.png" class="logo" />
+        <img :src="logo" class="logo" />
         <span class="title">壮锦博物馆</span>
       </div>
 
@@ -31,8 +31,10 @@
 </template>
 
 <script setup>
+
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import logo from '@/assets/logo.png'
 
 const router = useRouter()
 const activeIndex = ref('1')
